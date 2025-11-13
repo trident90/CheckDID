@@ -51,7 +51,12 @@ public class App
         DIDResolverAPI.getInstance().setResolverUrl(resolverUrl);
         try {
             System.out.println(">>>>> DID TEST start <<<<<");
+            long startTime = System.currentTimeMillis();
+            System.out.println("createDid start timestamp: " + startTime);
             MetadiumWallet wallet = MetadiumWallet.createDid(delegator);
+            long endTime = System.currentTimeMillis();
+            System.out.println("createDid end timestamp: " + endTime);
+            System.out.println("createDid response time (ms): " + (endTime - startTime));
             MetadiumKey key = wallet.getKey();
             String did = wallet.getDid();
             String kid = wallet.getKid();
